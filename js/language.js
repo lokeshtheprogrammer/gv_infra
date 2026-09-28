@@ -278,10 +278,53 @@ class LanguageSwitcher {
   init() {
     // Set initial language
     document.documentElement.lang = this.currentLang;
-    this.updateAllText();
+    
+    // Inject floating unmissable language toggle button
+    this.renderFloatingToggle();
 
-    // Set up language toggle button
+    this.updateAllText();
     this.setupToggleButton();
+  }
+
+  renderFloatingToggle() {
+    if (document.getElementById('floating-lang-toggle')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'floating-lang-toggle';
+    btn.className = 'lang-toggle-btn';
+    btn.setAttribute('title', 'Switch Language / భాష మార్చండి');
+    btn.innerHTML = `🌐 <span class="lang-btn-text">${this.currentLang === 'en' ? 'తెలుగు' : 'English'}</span>`;
+    
+    btn.style.cssText = `
+      position: fixed;
+      bottom: 85px;
+      right: 20px;
+      z-index: 999999;
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      color: #ffffff !important;
+      border: 2px solid #22c55e;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 14px;
+      font-family: system-ui, -apple-system, sans-serif;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    `;
+
+    btn.onmouseover = () => { btn.style.transform = 'scale(1.08)'; };
+    btn.onmouseout = () => { btn.style.transform = 'scale(1.0)'; };
+    btn.onclick = (e) => {
+      e.preventDefault();
+      this.switchLanguage();
+    };
+
+    document.body.appendChild(btn);
   }
 
   setupToggleButton() {

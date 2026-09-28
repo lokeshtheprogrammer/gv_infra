@@ -1927,7 +1927,13 @@
             navigationHelpButton: false,
             geocoder: false,
             homeButton: false,
-            sceneModePicker: false
+            sceneModePicker: false,
+            contextOptions: {
+              webgl: {
+                failIfMajorPerformanceCaveat: false,
+                preserveDrawingBuffer: true
+              }
+            }
           });
 
           // Set globe base color to dark slate so tiles blend naturally
@@ -1957,6 +1963,27 @@
           }
         } catch (e) {
           console.error('[Cesium] Initialization failed:', e);
+          const canvasContainer = document.getElementById('cesium-modal-canvas');
+          if (canvasContainer) {
+            canvasContainer.innerHTML = `
+              <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#ffffff; background:#0f172a; padding:30px; text-align:center; font-family:sans-serif;">
+                <div style="font-size:48px; margin-bottom:16px;">🌐</div>
+                <h3 style="font-size:20px; font-weight:700; margin-bottom:12px; color:#f87171;">WebGL Acceleration Required for 3D View</h3>
+                <p style="max-width:500px; color:#94a3b8; font-size:14px; line-height:1.6; margin-bottom:20px;">
+                  Your browser currently has WebGL or Hardware Acceleration disabled.
+                </p>
+                <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:16px; max-width:480px; text-align:left; font-size:13px; color:#cbd5e1; margin-bottom:20px;">
+                  <strong style="color:#e2e8f0; display:block; margin-bottom:8px;">How to enable WebGL:</strong>
+                  1. Open <strong>chrome://settings/system</strong> in your browser address bar.<br>
+                  2. Turn ON <strong>"Use graphics acceleration when available"</strong>.<br>
+                  3. Relaunch Chrome and refresh this page.
+                </div>
+                <button onclick="document.getElementById('modal-3d-extrusion-backdrop').style.display='none'" style="background:#3b82f6; color:white; border:none; padding:10px 24px; border-radius:8px; font-weight:700; cursor:pointer;">
+                  Close & Return to 2D Map
+                </button>
+              </div>
+            `;
+          }
           return;
         }
 

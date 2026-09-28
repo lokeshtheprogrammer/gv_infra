@@ -54,7 +54,13 @@ class CesiumLandViewer {
         infoBox: true,
         sceneModePicker: false,
         selectionIndicator: true,
-        navigationHelpButton: false
+        navigationHelpButton: false,
+        contextOptions: {
+          webgl: {
+            failIfMajorPerformanceCaveat: false,
+            preserveDrawingBuffer: true
+          }
+        }
       };
       if (terrainProvider) {
         viewerOptions.terrainProvider = terrainProvider;

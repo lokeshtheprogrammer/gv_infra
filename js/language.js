@@ -285,11 +285,20 @@ class LanguageSwitcher {
   }
 
   setupToggleButton() {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) {
-      toggle.textContent = this.currentLang === 'en' ? 'తెలుగు' : 'English';
-      toggle.addEventListener('click', () => this.switchLanguage());
-    }
+    const toggles = document.querySelectorAll('#lang-toggle, .lang-toggle-btn');
+    toggles.forEach(toggle => {
+      const labelText = this.currentLang === 'en' ? 'తెలుగు' : 'English';
+      const textSpan = toggle.querySelector('.lang-btn-text');
+      if (textSpan) {
+        textSpan.textContent = labelText;
+      } else {
+        toggle.innerHTML = `🌐 ${labelText}`;
+      }
+      toggle.onclick = (e) => {
+        e.preventDefault();
+        this.switchLanguage();
+      };
+    });
   }
 
   switchLanguage() {

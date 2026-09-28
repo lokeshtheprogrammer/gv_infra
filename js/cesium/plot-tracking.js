@@ -279,11 +279,11 @@ class PlotTracker {
         </div>
 
         <div class="detail-actions">
-          <a href="https://wa.me/919392887268?text=Hi%20GV%20Infra,%20I%20want%20details%20about%20${encodeURIComponent(plot.title ?? plot.id)}"
+          <a href="https://wa.me/919597676787?text=Hi%20GV%20Infra,%20I%20want%20details%20about%20${encodeURIComponent(plot.title ?? plot.id)}"
              target="_blank" rel="noopener" class="action-btn action-whatsapp">
             WhatsApp Enquiry
           </a>
-          <a href="tel:+919392887268" class="action-btn action-call">
+          <a href="tel:+919597676787" class="action-btn action-call">
             Call Sales
           </a>
           <button class="action-btn action-tour" onclick="window.dispatchEvent(new CustomEvent('plot:start-tour', {detail: {plotId: '${plot.id}'}}))">

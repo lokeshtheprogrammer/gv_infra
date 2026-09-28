@@ -1161,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           id: "lead-1000",
           name: "Ambavaram Tirumala Kondareddy",
-          phone: "9392887268",
+          phone: "9597676787",
           project: "Stambadri Enclave",
           plot: 114,
           source: "website_3d_masterplan",
@@ -1204,7 +1204,7 @@ document.addEventListener("DOMContentLoaded", () => {
       leads.unshift({
         id: "lead-1000",
         name: "Ambavaram Tirumala Kondareddy",
-        phone: "9392887268",
+        phone: "9597676787",
         project: "Stambadri Enclave",
         plot: 114,
         source: "website_3d_masterplan",

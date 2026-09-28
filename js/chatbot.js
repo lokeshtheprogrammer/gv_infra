@@ -452,10 +452,10 @@
     }
 
     handleContactSalesQuery() {
-      const phone = typeof GV_DATA !== 'undefined' ? GV_DATA.company.phone : '+91 9392887268';
+      const phone = typeof GV_DATA !== 'undefined' ? GV_DATA.company.phone : '+91 9597676787';
       const waUrl = typeof GV_DATA !== 'undefined'
         ? GV_DATA.buildWhatsAppUrl(null, "Hi GV Infra, I'd like to consult a property advisor regarding your plotted layouts.")
-        : 'https://wa.me/919392887268';
+        : 'https://wa.me/919597676787';
 
       return {
         text: `<strong>Direct Developer Leadership:</strong>\n\n` +
@@ -762,14 +762,14 @@
               return;
             }
             if (chip.action === 'CALL_SALES') {
-              const tel = typeof GV_DATA !== 'undefined' ? GV_DATA.telLink() : 'tel:+919392887268';
+              const tel = typeof GV_DATA !== 'undefined' ? GV_DATA.telLink() : 'tel:+919597676787';
               window.location.href = tel;
               return;
             }
             if (chip.action === 'WHATSAPP_SALES') {
               const waUrl = typeof GV_DATA !== 'undefined'
                 ? GV_DATA.buildWhatsAppUrl(null, "Hi GV Infra, I'd like to consult a property advisor regarding your plotted layouts.")
-                : 'https://wa.me/919392887268';
+                : 'https://wa.me/919597676787';
               window.open(waUrl, '_blank', 'noopener');
               return;
             }

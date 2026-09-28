@@ -450,8 +450,8 @@ class KhammamRealEstateGIS {
         <button class="action-btn whatsapp-btn" onclick="inquireOnWhatsApp('${plotNum}')">
           💬 Inquire on WhatsApp
         </button>
-        <button class="action-btn call-btn" onclick="callSales('+919392887268')">
-          📞 Call Sales (+91 93928 87268)
+        <button class="action-btn call-btn" onclick="callSales('+919597676787')">
+          📞 Call Sales (+91 95976 76787)
         </button>
       </div>
     `;
@@ -615,7 +615,7 @@ function closePlotDrawer() {
 function inquireOnWhatsApp(plotNumber) {
   const message = `Hi GV Infra Projects, I'm interested in Plot ${plotNumber} at Stambadri Enclave. Please share more details.`;
   const encoded = encodeURIComponent(message);
-  window.open(`https://wa.me/919392887268?text=${encoded}`, '_blank');
+  window.open(`https://wa.me/919597676787?text=${encoded}`, '_blank');
 }
 
 function callSales(phone) {

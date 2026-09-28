@@ -21,7 +21,7 @@
       password: 'admin123',
       name: 'GV Infra Administrator',
       role: 'admin',
-      phone: '+91 9392887268'
+      phone: '+91 9597676787'
     },
     user: {
       email: 'demo@investor.com',

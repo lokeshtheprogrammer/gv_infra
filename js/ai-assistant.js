@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * GEN-AI LAND ASSISTANT & AUTOMATION ENGINE
  * Intelligent Conversational Assistant for Telangana Real Estate & Land Parcels
  * Handles Telugu & English natural language queries, instant WhatsApp automation,
@@ -199,7 +199,7 @@ class TelanganaGenAIAssistant {
             <div style="font-weight: 700; font-size: 1rem;">GV Infra AI Land Advisor</div>
             <div style="font-size: 0.72rem; color: #94a3b8;">Telangana Land & Cadastral Expert (English & ??????)</div>
           </div>
-          <button id="ai-close-btn" style="background:none; border:none; color:white; font-size:1.4rem; cursor:pointer;">×</button>
+          <button id="ai-close-btn" style="background:none; border:none; color:white; font-size:1.4rem; cursor:pointer;">ï¿½</button>
         </div>
 
         <div id="ai-chat-body" class="ai-chat-body">
@@ -287,11 +287,11 @@ class TelanganaGenAIAssistant {
     if (q.includes('??????') || q.includes('?????') || q.includes('??????') || q.includes('??')) {
       return `
         ?? <strong>?????????? ?????????? ??????? ??????? (?????):</strong><br><br>
-        • <strong>?????? ????????:</strong> 302 DTCP & RERA ?????? ????????<br>
-        • <strong>??????:</strong> 1800 ?.?????? ????? 3000 ?.?????? ????<br>
-        • <strong>???.?.???.? (RERA) ?????:</strong> P02400005892<br>
-        • <strong>??:</strong> ????? ??????? ?18,500 ????????<br><br>
-        ?? ?????? ??????????? ??????? ?????????: <a href="https://wa.me/919392887268?text=Hi%20GV%20Infra,%20I%20want%20plot%20details" target="_blank" style="color:#15803d; font-weight:700;">WhatsApp Click ?</a>
+        ï¿½ <strong>?????? ????????:</strong> 302 DTCP & RERA ?????? ????????<br>
+        ï¿½ <strong>??????:</strong> 1800 ?.?????? ????? 3000 ?.?????? ????<br>
+        ï¿½ <strong>???.?.???.? (RERA) ?????:</strong> P02400005892<br>
+        ï¿½ <strong>??:</strong> ????? ??????? ?18,500 ????????<br><br>
+        ?? ?????? ??????????? ??????? ?????????: <a href="https://wa.me/919597676787?text=Hi%20GV%20Infra,%20I%20want%20plot%20details" target="_blank" style="color:#15803d; font-weight:700;">WhatsApp Click ?</a>
       `;
     }
 
@@ -299,9 +299,9 @@ class TelanganaGenAIAssistant {
     if (q.includes('east') || q.includes('east facing')) {
       return `
         ?? <strong>East-Facing Vastu Compliant Plots:</strong><br><br>
-        • <strong>Plot 114:</strong> 2,000 sq.ft · ?45,000,00 · <span style="color:#16a34a; font-weight:700;">Available</span><br>
-        • <strong>Plot 120:</strong> 2,400 sq.ft · ?54,000,00 · <span style="color:#16a34a; font-weight:700;">Available</span><br>
-        • <strong>Plot 204:</strong> 1,800 sq.ft · ?41,000,00 · <span style="color:#16a34a; font-weight:700;">Available</span><br><br>
+        ï¿½ <strong>Plot 114:</strong> 2,000 sq.ft ï¿½ ?45,000,00 ï¿½ <span style="color:#16a34a; font-weight:700;">Available</span><br>
+        ï¿½ <strong>Plot 120:</strong> 2,400 sq.ft ï¿½ ?54,000,00 ï¿½ <span style="color:#16a34a; font-weight:700;">Available</span><br>
+        ï¿½ <strong>Plot 204:</strong> 1,800 sq.ft ï¿½ ?41,000,00 ï¿½ <span style="color:#16a34a; font-weight:700;">Available</span><br><br>
         Would you like to view Plot 114 on the 3D Masterplan or book a site visit?
       `;
     }
@@ -322,7 +322,7 @@ class TelanganaGenAIAssistant {
       return `
         ?? <strong>Instant Automated WhatsApp Site Visit Booking:</strong><br><br>
         Click below to instantly launch WhatsApp with pre-filled site visit details:<br><br>
-        <a href="https://wa.me/919392887268?text=Hi%20GV%20Infra,%20I%20would%20like%20to%20book%20a%20site%20visit%20for%20Stambadri%20Enclave" target="_blank" style="background:#16a34a; color:white; padding:8px 14px; border-radius:8px; text-decoration:none; display:inline-block; font-weight:bold;">
+        <a href="https://wa.me/919597676787?text=Hi%20GV%20Infra,%20I%20would%20like%20to%20book%20a%20site%20visit%20for%20Stambadri%20Enclave" target="_blank" style="background:#16a34a; color:white; padding:8px 14px; border-radius:8px; text-decoration:none; display:inline-block; font-weight:bold;">
           ?? Open WhatsApp Direct Chat ?
         </a>
       `;
@@ -331,10 +331,10 @@ class TelanganaGenAIAssistant {
     // Default Fallback Response
     return `
       ?? <strong>Stambadri Enclave Project Overview:</strong><br>
-      • <strong>Location:</strong> Khammam-Kodada Highway, Gurralapadu<br>
-      • <strong>Plot Sizes:</strong> 1,800 sq.ft to 3,000 sq.ft<br>
-      • <strong>Road Widths:</strong> 50ft & 40ft BT Roads<br>
-      • <strong>Price Range:</strong> ?32 Lakhs – ?75 Lakhs<br><br>
+      ï¿½ <strong>Location:</strong> Khammam-Kodada Highway, Gurralapadu<br>
+      ï¿½ <strong>Plot Sizes:</strong> 1,800 sq.ft to 3,000 sq.ft<br>
+      ï¿½ <strong>Road Widths:</strong> 50ft & 40ft BT Roads<br>
+      ï¿½ <strong>Price Range:</strong> ?32 Lakhs ï¿½ ?75 Lakhs<br><br>
       Try asking: <em>"Show available plots"</em>, <em>"East facing plots"</em>, or <em>"Book site visit"</em>.
     `;
   }
@@ -346,3 +346,4 @@ if (typeof window !== 'undefined') {
     window.telanganaAI = new TelanganaGenAIAssistant();
   });
 }
+

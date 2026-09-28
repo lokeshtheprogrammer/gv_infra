@@ -70,10 +70,10 @@ class NonTechEasyMode {
         }
       </style>
       <div class="easy-action-bar">
-        <a href="https://wa.me/919392887268?text=Hi%20GV%20Infra,%20I%20want%20to%20see%20Stambadri%20Enclave%20land%20photos%20and%20prices." target="_blank" class="easy-btn btn-wa-easy">
+        <a href="https://wa.me/919597676787?text=Hi%20GV%20Infra,%20I%20want%20to%20see%20Stambadri%20Enclave%20land%20photos%20and%20prices." target="_blank" class="easy-btn btn-wa-easy">
           💬 <span>WhatsApp</span>
         </a>
-        <a href="tel:+919392887268" class="easy-btn btn-call-easy">
+        <a href="tel:+919597676787" class="easy-btn btn-call-easy">
           📞 <span>Call Sales</span>
         </a>
         <a href="https://maps.google.com/?q=17.24767,80.14368" target="_blank" class="easy-btn btn-nav-easy">

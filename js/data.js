@@ -27,8 +27,8 @@ const GV_DATA = (() => {
     name: "GV Infra Projects",
     tagline: "DTCP Open Plots & Constructions",
     md: "G. Surya Teja — Managing Director",
-    phone: "+91 9392887268",
-    whatsapp: "919392887268", // normalized digits only (country code 91 + 10 digits)
+    phone: "+91 9597676787",
+    whatsapp: "919597676787", // normalized digits only (country code 91 + 10 digits)
     email: "info@gvinfraprojects.com",
     hqAddress: "#5-5-140/1, 1st Floor, Nustar Bhavan, Opp. Mangalya Shopping Mall, Vanastalipuram, Hyderabad – 500070",
     khammamOffice: "Star Complex, 5th Floor #501, Opp. HP Petrol Bunk, Raparthi Nagar, Khammam – 507002",
@@ -504,7 +504,7 @@ const GV_DATA = (() => {
       if (!digits) return "";
       // Remove leading zeroes
       digits = digits.replace(/^0+/, "");
-      // Remove duplicated country code (e.g. 91919392887268 -> 919392887268)
+      // Remove duplicated country code (e.g. 91919597676787 -> 919597676787)
       if (digits.length === 14 && digits.startsWith(defaultCountry + defaultCountry)) {
         digits = digits.slice(defaultCountry.length);
       }
@@ -516,7 +516,7 @@ const GV_DATA = (() => {
     },
 
     buildWhatsAppUrl(phone, message) {
-      const targetPhone = this.normalizePhone(phone || COMPANY.whatsapp || "919392887268");
+      const targetPhone = this.normalizePhone(phone || COMPANY.whatsapp || "919597676787");
       if (!targetPhone) return "#";
       if (message && String(message).trim()) {
         return `https://wa.me/${targetPhone}?text=${encodeURIComponent(String(message).trim())}`;
@@ -529,7 +529,7 @@ const GV_DATA = (() => {
     },
 
     telLink(phone) {
-      const digits = this.normalizePhone(phone || COMPANY.phone || "919392887268");
+      const digits = this.normalizePhone(phone || COMPANY.phone || "919597676787");
       return `tel:+${digits}`;
     },
   };

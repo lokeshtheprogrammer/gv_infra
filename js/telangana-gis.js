@@ -218,7 +218,7 @@ class TelanganaCadastralGIS {
         <p style="margin: 8px 0 0; font-size: 10px; color: var(--brand-forest); text-transform: uppercase; font-weight: 600;">
           Status: ${parcel.status.replace('_', ' ')}
         </p>
-        <a href="https://wa.me/919392887268?text=I'm interested in survey ${parcel.surveyNo} at ${parcel.village}. Please provide details."
+        <a href="https://wa.me/919597676787?text=I'm interested in survey ${parcel.surveyNo} at ${parcel.village}. Please provide details."
            target="_blank"
            style="display: block; margin-top: 8px; padding: 6px 10px; background: #176B41; color: white; border-radius: 3px; text-decoration: none; text-align: center; font-weight: 600; font-size: 11px;">
           Enquire on WhatsApp

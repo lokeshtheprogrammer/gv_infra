@@ -313,7 +313,7 @@ class LanguageSwitcher {
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.dataset.i18n;
-      if (translations[this.currentLang][key]) {
+      if (translations[this.currentLang] && translations[this.currentLang][key]) {
         element.textContent = translations[this.currentLang][key];
       }
     });
@@ -321,10 +321,97 @@ class LanguageSwitcher {
     // Update placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
       const key = element.dataset.i18nPlaceholder;
-      if (translations[this.currentLang][key]) {
+      if (translations[this.currentLang] && translations[this.currentLang][key]) {
         element.placeholder = translations[this.currentLang][key];
       }
     });
+
+    // Translate full page dynamic text nodes
+    this.translatePageContent();
+  }
+
+  translatePageContent() {
+    if (!this.phraseMap) {
+      this.phraseMap = {
+        "Projects": "ప్రాజెక్టులు",
+        "PROJECTS": "ప్రాజెక్టులు",
+        "3D Masterplan": "3D మాస్టర్‌ప్లాన్",
+        "3D MASTERPLAN": "3D మాస్టర్‌ప్లాన్",
+        "Specifications": "వివరాలు & సదుపాయాలు",
+        "SPECIFICATIONS": "వివరాలు & సదుపాయాలు",
+        "Connectivity": "కనెక్టివిటీ",
+        "CONNECTIVITY": "కనెక్టివిటీ",
+        "Contact": "సంప్రదించండి",
+        "CONTACT": "సంప్రదించండి",
+        "Admin": "అడ్మిన్",
+        "ADMIN": "అడ్మిన్",
+        "ACCOUNT": "ఖాతా",
+        "SEARCH": "వెతకండి",
+        "Call Sales": "విక్రయ సంప్రదించండి",
+        "Call": "కాల్ చేయండి",
+        "WhatsApp Sales": "WhatsApp సంప్రదించండి",
+        "Book on WhatsApp": "WhatsApp బుకింగ్",
+        "WhatsApp Inquiry": "WhatsApp విచారణ",
+        "WhatsApp Official": "WhatsApp అఫీషియల్",
+        "See the land.": "భూమిని నేరుగా చూడండి.",
+        "Choose with confidence.": "పూర్తి విశ్వాసంతో ఎంచుకోండి.",
+        "Open Real Land Viewer": "రియల్ ల్యాండ్ వ్యూయర్ తెరవండి",
+        "360° Visual Tour": "360° విజువల్ టూర్",
+        "Plotted Units": "మొత్తం ప్లాట్లు",
+        "Wide Internal BT Roads": "విస్తృత అంతర్గత BT రోడ్లు",
+        "Quick EMI Calculator": "త్వరిత EMI కాలిక్యులేటర్",
+        "Request an Immediate Callback": "తక్షణ కాల్‌బ్యాక్ అభ్యర్థన",
+        "Your Full Name": "మీ పూర్తి పేరు",
+        "Mobile Number": "మొబైల్ నంబర్",
+        "Request Callback →": "కాల్‌బ్యాక్ పంపండి →",
+        "Hyderabad Headquarters": "హైదరాబాద్ హెడ్ ఆఫీస్",
+        "Khammam Office": "ఖమ్మం ఆఫీస్",
+        "Direct Contact": "నేరుగా సంప్రదించండి",
+        "Available Plots": "అందుబాటులో ఉన్న ప్లాట్‌లు",
+        "All Facings": "అన్ని దిశలు",
+        "East Facing": "తూర్పు దిశ",
+        "West Facing": "పడమర దిశ",
+        "North Facing": "ఉత్తర దిశ",
+        "South Facing": "దక్షిణ దిశ",
+        "Plot Status": "ప్లాట్ స్థితి",
+        "Available": "అందుబాటులో ఉంది",
+        "Reserved": "రిజర్వ్ చేయబడింది",
+        "Booked": "బుక్ అయింది",
+        "Sold": "అమ్మబడింది",
+        "Inquire on WhatsApp": "WhatsApp విచారణ",
+        "Walk 360° Google Street View": "360° స్ట్రీట్ వ్యూ నడవండి",
+        "View Real 3D Satellite Terrain Surface": "3D ఉపగ్రహ ఉపరితలం చూడండి",
+        "Reshape Corner Vertices": "కార్నర్ పాయింట్లు సరిచేయండి",
+        "Parcels & Land Intel": "ల్యాండ్ ఇంటిలిజెన్స్",
+        "Hide Sidebar": "సైడ్‌బార్ దాచు",
+        "3D Tools": "3D టూల్స్"
+      };
+    }
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while ((node = walker.nextNode())) {
+      const parent = node.parentElement;
+      if (!parent || parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE' || parent.classList.contains('lang-toggle-btn') || parent.id === 'lang-toggle') {
+        continue;
+      }
+      
+      const text = node.nodeValue.trim();
+      if (!text) continue;
+
+      if (this.currentLang === 'te') {
+        if (!node.originalText) {
+          node.originalText = node.nodeValue;
+        }
+        for (const [enKey, teValue] of Object.entries(this.phraseMap)) {
+          if (node.nodeValue.includes(enKey)) {
+            node.nodeValue = node.nodeValue.replace(enKey, teValue);
+          }
+        }
+      } else if (this.currentLang === 'en' && node.originalText) {
+        node.nodeValue = node.originalText;
+      }
+    }
   }
 
   getText(key) {

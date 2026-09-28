@@ -54,9 +54,11 @@
      */
     playTeluguWelcomeGreeting() {
       if (this.welcomeSpoken) return;
+      if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('telugu_welcome_played') === 'true') return;
       this.welcomeSpoken = true;
+      if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('telugu_welcome_played', 'true');
 
-      const teluguGreeting = "నమస్కారం! ఖమ్మం గుర్రాలపాడు స్టంబాద్రి ఎన్‌క్లేవ్ 3D డిజిటల్ ల్యాండ్ మ్యాప్‌కి స్వాగతం. ప్లాట్ల వివరాలు, ధరలు, లేదా 3D టూర్ కోసం నన్ను అడగండి.";
+      const teluguGreeting = "నమస్కారం! ఖమ్మం గుర్రాలపాడు స్టంబద్రి ఎన్‌క్లేవ్ 3D డిజిటల్ ల్యాండ్ మ్యాప్‌కి స్వాగతం.";
       console.log('[VoiceAgent] Playing Telugu Welcome Greeting...');
       
       this.updateVoiceStatus('🔊 స్వాగతం! (Welcome to Khammam 3D Land)', 'speaking');
@@ -135,7 +137,16 @@
      */
     speakText(text, lang = 'te-IN') {
       if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel(); // Clear queue
+      
+      // Stop speech recognition while speaking to prevent microphone loop feedback
+      this.stopListening();
+      window.speechSynthesis.cancel(); // Clear queued speech
+
+      if (this.isSpeaking) {
+        console.log('[VoiceAgent] Speech utterance already in progress, skipping duplicate.');
+        return;
+      }
+      this.isSpeaking = true;
 
       const cleanText = text.replace(/[*#_]/g, '');
       const utterance = new SpeechSynthesisUtterance(cleanText);
@@ -151,10 +162,26 @@
       }
 
       utterance.onend = () => {
+        this.isSpeaking = false;
+        this.updateVoiceStatus('మాట్లాడటానికి మైక్ క్లిక్ చేయండి', 'idle');
+      };
+
+      utterance.onerror = () => {
+        this.isSpeaking = false;
+        window.speechSynthesis.cancel();
         this.updateVoiceStatus('మాట్లాడటానికి మైక్ క్లిక్ చేయండి', 'idle');
       };
 
       window.speechSynthesis.speak(utterance);
+    }
+
+    stopAllAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      this.isSpeaking = false;
+      this.stopListening();
+      this.updateVoiceStatus('వాయిస్ ఆపబడింది (Audio Stopped)', 'idle');
     }
 
     /**
@@ -176,6 +203,7 @@
           </div>
           <div class="voice-actions">
             <button class="voice-action-chip" id="voice-welcome-btn" title="స్వాగతం చెప్పండి">🔊 స్వాగతం</button>
+            <button class="voice-action-chip" id="voice-stop-btn" style="background:#ef4444; color:white;" title="వాయిస్ ఆపివేయండి (Mute Audio)">🔇 Mute</button>
             <button class="voice-action-chip" id="voice-lang-toggle">🗣️ తెలుగు Active</button>
           </div>
         </div>
@@ -196,7 +224,12 @@
 
       document.getElementById('voice-welcome-btn')?.addEventListener('click', () => {
         this.welcomeSpoken = false;
+        if (typeof sessionStorage !== 'undefined') sessionStorage.removeItem('telugu_welcome_played');
         this.playTeluguWelcomeGreeting();
+      });
+
+      document.getElementById('voice-stop-btn')?.addEventListener('click', () => {
+        this.stopAllAudio();
       });
 
       document.getElementById('voice-lang-toggle')?.addEventListener('click', () => {

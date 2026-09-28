@@ -578,8 +578,11 @@ class KhammamRealEstateGIS {
    */
   playTeluguGreeting() {
     if (!('speechSynthesis' in window)) return;
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('telugu_greeting_played') === 'true') return;
+    if (typeof sessionStorage !== 'undefined') sessionStorage.setItem('telugu_greeting_played', 'true');
 
     try {
+      window.speechSynthesis.cancel();
       const greetingText = "నమస్కారం! ఖమ్మం గుర్రాలపాడు శ్రీ స్తంభాద్రి ఎన్‌క్లేవ్‌కి స్వాగతం.";
       const utterance = new SpeechSynthesisUtterance(greetingText);
       utterance.lang = 'te-IN';
